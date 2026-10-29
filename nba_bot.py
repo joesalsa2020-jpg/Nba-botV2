@@ -910,6 +910,11 @@ def admin_page():
     return ADMIN_HTML   # la página no contiene secretos; la API exige X-Admin-Pass
 
 
+@app.get("/health")
+@app.head("/health")
+def health_check():
+    return {"status": "ok"}
+
 @app.get("/", response_class=HTMLResponse)
 def index():
     return HTML_PAGE
